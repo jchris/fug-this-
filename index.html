@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>Fug This! World Headquarters</title>
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+  <body>
+    <a href="{{ url }}">{{ url_linktext }}</a>
+    
+    <h1>Fug This: You can fug too!</h1>
+    
+    <p>The following are fugs from our friends around the internet. To become a fugger, just install our bookmarklet by dragging it to your bookmarks bar: <a href="javascript:%28function%28%29%7Bvar%20s%20%3D%20document.createElement%28%27script%27%29%3Bs.src%20%3D%20%27http%3A%2F%2Ffug-this.appspot.com%2Fjavascripts%2Ffugglet.js%3Fr%3D%27%2BMath.random%28%29%3Bs.type%20%3D%20%27text%2Fjavascript%27%3Bdocument.body.appendChild%28s%29%7D%29%28%29%3B">Fug This!</a> Click it when you&apos;re on a page that has a picture you want to fug. You&apos;ll have a chance to enter your message, and then your fug will appear here.</p>
+    <p>If you&apos;re like &quot;WTF is Fug?&quot; then visit the original <a href="http://gofugyourself.typepad.com/">Go Fug Yourself</a>, which is not in anyway affliated with us at all.</p>
+    <h2>Latest fugs from {{ who }}</h2>
+    <ul>
+    {% for fugging in fuggings %}
+      <li>
+        <b>{{ fugging.author.nickname }}</b> fugged:
+        <br/>
+        <a class="fugimg" title="{{fugging.title|escape}}" href="{{fugging.link}}"><img src="/images/{{fugging.photo.key}}"/></a>
+        {% if fugging.message %}
+        <p>{{ fugging.message|escape }}</p>
+        {% endif %}
+        <br/>
+      </li>
+    {% endfor %}
+    </ul>
+    {% if logged_in %}
+
+    <form action="/" method="post">
+      <label for="title">page title: </label><input type="text" name="title"></input>
+      <br/>
+      <label for="link">page url: </label><input type="text" name="link"></input>
+      <br/>
+      <label for="photo">photo url: </label><input type="text" name="photo"></input>
+      <br/>
+      <label for="message">message: </label><textarea name="message"></textarea>
+      <br/>
+      <label>Send your fug:</label><input type="submit" value="Fug This!">
+    </form>
+    {% else %}
+    <p>You must be logged in to post a new fug.</p>
+    {% endif %}
+  </body>
+</html>

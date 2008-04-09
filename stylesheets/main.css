@@ -1,0 +1,29 @@
+body {
+  font-family: Century, Georgia, sans-serif;
+  background-color: #eeb;
+}
+form label {
+  width:8em;
+  text-align:right;
+  padding-right:10px;
+  padding-bottom:10px;
+  display:block;
+  float:left;
+}
+form textarea {
+  width:20em;
+  height:10em;
+}
+br {
+  clear:left;
+}
+li p {
+  padding:8px;
+}
+.fugimg {
+  float:left;
+  margin:4px;
+}
+.fugimg img {
+  max-height:400px;
+}
